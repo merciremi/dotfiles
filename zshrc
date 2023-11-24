@@ -4,7 +4,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="robbyrussell"
 
 # Useful oh-my-zsh plugins
-plugins=(gitfast last-working-dir sublime zsh-syntax-highlighting history-substring-search)
+plugins=(gitfast git last-working-dir sublime zsh-syntax-highlighting history-substring-search)
 
 # (macOS-only) Prevent Homebrew from reporting - https://github.com/Homebrew/brew/blob/master/docs/Analytics.md
 export HOMEBREW_NO_ANALYTICS=1
@@ -14,6 +14,15 @@ ZSH_DISABLE_COMPFIX=true
 
 # Actually load Oh-My-Zsh
 source "${ZSH}/oh-my-zsh.sh"
+unalias ga
+unalias gbr
+unalias gca
+unalias gcm
+unalias gco
+unalias gfo
+unalias glog
+unalias grm
+unalias gst
 # unalias lt # we need `lt` for https://github.com/localtunnel/localtunnel
 
 # Load rbenv if installed (to manage your Ruby versions)
