@@ -14,7 +14,7 @@ ZSH_DISABLE_COMPFIX=true
 
 # Actually load Oh-My-Zsh
 source "${ZSH}/oh-my-zsh.sh"
-unalias lt # we need `lt` for https://github.com/localtunnel/localtunnel
+# unalias lt # we need `lt` for https://github.com/localtunnel/localtunnel
 
 # Load rbenv if installed (to manage your Ruby versions)
 export PATH="${HOME}/.rbenv/bin:${PATH}" # Needed for Linux/WSL
@@ -71,3 +71,5 @@ export EDITOR="'/Applications/Sublime Text 3.app/Contents/SharedSupport/bin/subl
 
 # Set ipdb as the default Python debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
+export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
+export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"
