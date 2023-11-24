@@ -1,0 +1,40 @@
+# Get External IP / Internet Speed
+alias myip="curl https://ipinfo.io/json" # or /ip for plain-text ip
+alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
+
+################
+# Sublime Text #
+################
+
+alias stt="sublime text"
+
+###############
+# GIT aliases #
+###############
+
+alias ga="git add"
+alias gbr="git branch"
+alias gca="git commit --amend --reuse-message=HEAD"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gfo="git fetch origin"
+alias glog="git log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'"
+alias gpfl="git push --force-with-lease"
+alias gpo="git pull origin"
+alias gpsu="git push --set-upstream origin $(git_current_branch)"
+alias grm="git rebase $(git_main_branch)"
+alias gst="git status"
+
+##################
+# Jekyll aliases #
+##################
+
+alias jdraft="bundle exec jekyll draft"
+alias jpublish="bundle exec jekyll publish"
+alias jserve="bundle exec jekyll serve --config _config.yml,_config_dev.yml --drafts"
+
+########################
+# Work-related aliases #
+########################
+
+. "$HOME/.work_env"

@@ -58,15 +58,16 @@ type -a nvm > /dev/null && load-nvmrc
 # Same for `./node_modules/.bin` and nodejs
 export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
 
-# Store your own aliases in the ~/.aliases file and load the here.
+# Store your own aliases in the ~/.aliases file and load them here.
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
 # Encoding stuff for the terminal
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-export BUNDLER_EDITOR=code
-export EDITOR=code
+export BUNDLER_EDITOR=sublime text
+export EDITOR=sublime text
 
 # Set ipdb as the default Python debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
+
