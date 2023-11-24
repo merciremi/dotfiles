@@ -6,7 +6,7 @@ alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/m
 # Sublime Text #
 ################
 
-alias stt="sublime text"
+alias stt="subl"
 
 ###############
 # GIT aliases #
@@ -21,8 +21,8 @@ alias gfo="git fetch origin"
 alias glog="git log --graph --all --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr) %C(bold blue)%an%Creset %C(yellow)%d%Creset'"
 alias gpfl="git push --force-with-lease"
 alias gpo="git pull origin"
-alias gpsu="git push --set-upstream origin $(git_current_branch)"
-alias grm="git rebase $(git_main_branch)"
+alias gpsu="git push --set-upstream origin"
+alias grm="git rebase main"
 alias gst="git status"
 
 ##################
