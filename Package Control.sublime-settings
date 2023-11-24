@@ -1,0 +1,165 @@
+{
+	"auto_upgrade": true,
+	"auto_upgrade_frequency": 1,
+	"auto_upgrade_ignore":
+	[
+	],
+	"bootstrapped": true,
+	"cache_length": 300,
+	"channels":
+	[
+		"https://packagecontrol.io/channel_v3.json"
+	],
+	"debug": false,
+	"dirs_to_ignore":
+	[
+		".circleci",
+		".git",
+		".github",
+		".hg",
+		".svn",
+		"_darcs",
+		"CVS"
+	],
+	"downloader_precedence":
+	{
+		"linux":
+		[
+			"urllib",
+			"oscrypto",
+			"curl",
+			"wget"
+		],
+		"osx":
+		[
+			"urllib",
+			"oscrypto",
+			"curl"
+		],
+		"windows":
+		[
+			"wininet",
+			"oscrypto"
+		],
+	},
+	"enable_tests": false,
+	"files_to_ignore":
+	[
+		"*.sublime-project",
+		"*.sublime-workspace",
+		"*.tmTheme.cache",
+		".bzrignore",
+		".gitignore",
+		".gitattributes",
+		".hgignore",
+		".codecov.yml",
+		".travis.yml",
+		"appveyor.yml",
+		"codecov.yml",
+		"*.pyc",
+		".coveragerc",
+		".flake8",
+		"pyproject.toml",
+		"tox.ini",
+		"mypy.ini"
+	],
+	"files_to_include":
+	[
+	],
+	"git_binary":
+	[
+	],
+	"git_update_command":
+	[
+		"pull",
+		"--ff",
+		"--commit"
+	],
+	"hg_binary":
+	[
+	],
+	"hg_update_command":
+	[
+		"pull",
+		"--update"
+	],
+	"http_cache": true,
+	"http_cache_length": 604800,
+	"http_proxy": "",
+	"https_proxy": "",
+	"ignore_vcs_packages":
+	[
+	],
+	"in_process_packages":
+	[
+	],
+	"install_missing": true,
+	"install_prereleases":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"All Autocomplete",
+		"Babel",
+		"Catppuccin color schemes",
+		"Emmet",
+		"ERB Snippets",
+		"ESLint",
+		"Git",
+		"GitGutter",
+		"Package Control",
+		"Pretty JSON",
+		"Ruby Slim",
+		"SCSS",
+		"SublimeLinter",
+		"SublimeLinter-rubocop"
+	],
+	"package_destination": "",
+	"package_name_map":
+	{
+	},
+	"package_profiles":
+	{
+		"Binaries Only":
+		{
+			"files_to_ignore":
+			[
+				"*.sublime-project",
+				"*.sublime-workspace",
+				"*.tmTheme.cache",
+				".bzrignore",
+				".gitignore",
+				".gitattributes",
+				".hgignore",
+				".codecov.yml",
+				".travis.yml",
+				"appveyor.yml",
+				"codecov.yml",
+				"*.py",
+				".coveragerc",
+				".flake8",
+				"pyproject.toml",
+				"tox.ini",
+				"mypy.ini"
+			],
+			"files_to_include":
+			[
+				"__init__.py"
+			],
+		},
+	},
+	"proxy_password": "",
+	"proxy_username": "",
+	"remove_orphaned": true,
+	"repositories":
+	[
+	],
+	"submit_url": "https://packagecontrol.io/submit",
+	"submit_usage": true,
+	"timeout": 30,
+	"unmanaged_packages_ignore":
+	[
+	],
+	"user_agent": "Package Control v%s",
+}
