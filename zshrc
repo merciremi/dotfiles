@@ -82,3 +82,10 @@ export EDITOR="'/Applications/Sublime Text 3.app/Contents/SharedSupport/bin/subl
 export PYTHONBREAKPOINT=ipdb.set_trace
 export BUNDLER_EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -a"
 export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"
+
+# Customize ZSH prompt
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%b '
+setopt PROMPT_SUBST
+PROMPT='%B%F{blue}%1d%f%b %F{red}${vcs_info_msg_0_}%f%B%F{white}→%f%b '
