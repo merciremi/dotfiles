@@ -1,10 +1,13 @@
 #!/bin/zsh
 
-# Define a function which rename a `target` file to `target.backup` if the file
-# exists and if it's a 'real' file, ie not a symlink
+# Rename a `target` file to `target.backup`
+# if the file exists && is an actual file - not just a symlink.
 backup() {
   target=$1
+  # -e => True if file exists (regardless of type).
   if [ -e "$target" ]; then
+    # ! => True if the condition is false
+    # -L => True if file exists && is a symbolic link.
     if [ ! -L "$target" ]; then
       mv "$target" "$target.backup"
       echo "-----> Moved the old $target config file to $target.backup"
@@ -12,6 +15,7 @@ backup() {
   fi
 }
 
+# Symlinking files from /dotfiles in root
 symlink() {
   file=$1
   link=$2
@@ -21,15 +25,20 @@ symlink() {
   fi
 }
 
+echo "First step => Backup-ing and symlinking configuration files"
+
 # For all files `$name` in the present folder except `*.sh`, `README.md`, `settings.json`,
 # and `config`, backup the target file located at `~/.$name` and symlink `$name` to `~/.$name`
 for name in aliases gemrc gitconfig irbrc rspec zprofile zshrc; do
   if [ ! -d "$name" ]; then
+    echo "Currently working on $name"
     target="$HOME/.$name"
     backup $target
     symlink $PWD/$name $target
   fi
 done
+
+echo "Second step => Installing zsh-syntax-highlighting"
 
 # Install zsh-syntax-highlighting plugin
 CURRENT_DIR=`pwd`
@@ -42,66 +51,30 @@ if [ ! -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
 fi
 cd "$CURRENT_DIR"
 
-# old
-setopt nocasematch
-if [[ ! `uname` =~ "darwin" ]]; then
-  git config --global core.editor "subl -n -w $@ >/dev/null 2>&1"
-  echo 'export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"' >> zshrc
-else
-  git config --global core.editor "'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' -n -w"
-  bundler_editor="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
-  echo "export BUNDLER_EDITOR=\"${bundler_editor} -a\"" >> zshrc
-fi
+echo "Third step => Setting-up Sublime Text."
 
-# # current
-# # Symlink VS Code settings and keybindings to the present `settings.json` and `keybindings.json` files
-# # If it's a macOS
-# if [[ `uname` =~ "Darwin" ]]; then
-#   CODE_PATH=~/Library/Application\ Support/Code/User
-# # Else, it's a Linux
-# else
-#   CODE_PATH=~/.config/Code/User
-#   # If this folder doesn't exist, it's a WSL
-#   if [ ! -e $CODE_PATH ]; then
-#     CODE_PATH=~/.vscode-server/data/Machine
-#   fi
-# fi
-
-# for name in settings.json keybindings.json; do
-#   target="$CODE_PATH/$name"
-#   backup $target
-#   symlink $PWD/$name $target
-# done
-
-# Setup Sublime as the global core editor
+# Setup Sublime as the global core editor (MAC only)
 if [[ `uname` =~ "Darwin" ]]; then
   git config --global core.editor "subl -n -w $@ >/dev/null 2>&1"
   echo 'export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"' >> zshrc
-# Else, it's a Linux
-else
-  CODE_PATH=~/.config/Code/User
-  # If this folder doesn't exist, it's a WSL
-  if [ ! -e $CODE_PATH ]; then
-    CODE_PATH=~/.vscode-server/data/Machine
-  fi
 fi
 
-# Sublime Text
-if [[ ! `uname` =~ "darwin" ]]; then
-  SUBL_PATH=~/Library/Application\ Support/Sublime\ Text\ 3
-  # SUBL_PATH=~/.config/sublime-text-3
-else
+# Define Sublime Text path
+if [[ ! `uname` =~ "Darwin" ]]; then
   SUBL_PATH=~/Library/Application\ Support/Sublime\ Text\ 3
 fi
 
+# Install Package Control, favourite packages and settings
 mkdir -p $SUBL_PATH/Packages/User $SUBL_PATH/Installed\ Packages
 backup "$SUBL_PATH/Packages/User/Preferences.sublime-settings"
-curl -k https://sublime.wbond.net/Package%20Control.sublime-package > $SUBL_PATH/Installed\ Packages/Package\ Control.sublime-package
+subl --command "install_package_control"
 ln -s $PWD/Preferences.sublime-settings $SUBL_PATH/Packages/User/Preferences.sublime-settings
 ln -s $PWD/Package\ Control.sublime-settings $SUBL_PATH/Packages/User/Package\ Control.sublime-settings
 
+echo "Fourth step => Configure SSH"
 
-# Symlink SSH config file to the present `config` file for macOS and add SSH passphrase to the keychain
+# Symlink SSH config file to my personal `config` file for macOS
+# Add SSH passphrase to the keychain
 if [[ `uname` =~ "Darwin" ]]; then
   target=~/.ssh/config
   backup $target
@@ -109,7 +82,7 @@ if [[ `uname` =~ "Darwin" ]]; then
   ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 fi
 
-# Refresh the current terminal with the newly installed configuration
+# Reload the current terminal with the newly installed configuration.
 exec zsh
 
-echo "👌 Carry on with git setup!"
+echo "✅ Move on to git setup."

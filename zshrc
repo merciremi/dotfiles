@@ -88,4 +88,4 @@ autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
 setopt PROMPT_SUBST
-PROMPT='%B%F{blue}%1d%f%b %F{red}${vcs_info_msg_0_}%f%B%F{white}→%f%b '
+PROMPT='%B%F{blue}%2d%f%b %F{red}${vcs_info_msg_0_}%f%B%F{white}→%f%b '
