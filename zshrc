@@ -69,8 +69,6 @@ export PATH="./bin:./node_modules/.bin:${PATH}:/usr/local/sbin"
 # Store your own aliases in the ~/.aliases file and load them here.
 [[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"
 
-# Store your work-related aliases and env variables in the ~/.work_env and load them here
-
 # Encoding stuff for the terminal
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -88,4 +86,4 @@ autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
 setopt PROMPT_SUBST
-PROMPT='%B%F{blue}%2d%f%b %F{red}${vcs_info_msg_0_}%f%B%F{white}→%f%b '
+PROMPT='%F{blue}%2d%f %B%F{174}${vcs_info_msg_0_}%f%b%B%F{white}→%f%b '

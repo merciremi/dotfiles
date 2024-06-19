@@ -1,9 +1,15 @@
 {
 	"always_show_minimap_viewport": false,
-	"color_scheme": "Packages/Color Scheme - Default/Mariana.sublime-color-scheme",
+	"color_scheme": "Mariana.sublime-color-scheme",
 	"detect_indentation": false,
 	"draw_white_space": true,
 	"ensure_newline_at_eof_on_save": true,
+  "show_full_path": true,
+  "show_rel_path": true,
+  "show_sidebar_button": false,
+  "show_indentation": false,
+  "show_line_column": "compact",
+  "show_spelling_errors": false,
 	"folder_exclude_patterns":
 	[
 		"tmp",
@@ -18,7 +24,7 @@
 		"public/packs",
 		"coverage"
 	],
-	"font_size": 15,
+	"font_size": 17,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"ignored_packages":
@@ -28,7 +34,10 @@
 	"remember_open_files": false,
 	"rulers":
 	[
-		80
+		[
+			120,
+			"dotted"
+		]
 	],
 	"tab_size": 2,
 	"theme": "Adaptive.sublime-theme",
@@ -38,4 +47,7 @@
 	"update_check": false,
 	"use_tab_stops": true,
 	"wordWrap": false,
+  "auto_complete_commit_on_tab": true,
+  /*"rulers": [[120, "dotted"]],*/
+	"index_files": false,
 }

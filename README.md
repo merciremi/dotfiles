@@ -1,6 +1,12 @@
+<!-- todo: clean first draft, add fav configuration for mac  -->
+
 How to make a fresh install on a new mac.
 
 ## Command Line Tools
+
+### 1) `xcode-select`
+
+The command `xcode-select --install` is used to install the [Command Line Tools package](https://mac.install.guide/commandlinetools/8) for Xcode on a macOS system. This package includes essential tools such as git, make, and clang, which are necessary for compiling software and performing various development tasks directly from the command line.
 
 In a new terminal, install xcode:
 
@@ -16,7 +22,7 @@ If you receive the following message, you can just skip this step and go to next
 
 Otherwise, it will open a window asking you if you want to install some software: click on "Install" and wait.
 
-![Install xcode-select on macOS](images/macos_xcode_select_install.png)
+![Install xcode-select on macOS](https://github.com/lewagon/setup/raw/master/images/macos_xcode_select_install.png)
 
 :heavy_check_mark: If you see the message "The software was installed".
 
@@ -46,7 +52,7 @@ This will ask for your confirmation (hit `Enter`) and your **macOS user account 
 
 :warning: If you see this warning :point_down:, run the two commands in the `Next steps` section to add Homebrew to your PATH:
 
-![macOS Homebrew installation warning](images/macos_homebrew_warning.png)
+![macOS Homebrew installation warning](https://github.com/lewagon/setup/raw/master/images/macos_homebrew_warning.png)
 
 ```bash
 # ⚠️ Only execute these commands if you saw this warning ☝
@@ -67,6 +73,14 @@ If you get a `/usr/local must be writable` error, just run this:
 ```bash
 sudo chown -R $USER:admin /usr/local
 ```
+
+> The command sudo chown -R $USER:admin /usr/local changes the ownership of the /usr/local directory and its contents to the current user and the admin group. Here's a detailed breakdown of what each part of the command does:
+> - sudo: Runs the command with superuser (root) privileges, necessary for modifying system directories.
+> - chown: The command used to change the ownership of files and directories.
+> - -R: The recursive option, which means the command will apply to all files and subdirectories within /usr/local.
+> - $USER: An environment variable that represents the current user's username.
+> - admin: The group name. This sets the group ownership to admin.
+> - /usr/local: The target directory whose ownership is being changed.
 
 ```bash
 brew update
@@ -567,6 +581,10 @@ You must pin:
 ## Setup completed!
 
 ## Optional steps
+
+- Alternative to defunkt GoToDefinition: https://packagecontrol.io/packages/SublimeCodeIntel (almost 2m downlaods)
+
+
 
 Sometimes, you need more for a new job / project.
 

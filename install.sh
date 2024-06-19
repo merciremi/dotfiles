@@ -29,7 +29,7 @@ echo "First step => Backup-ing and symlinking configuration files"
 
 # For all files `$name` in the present folder except `*.sh`, `README.md`, `settings.json`,
 # and `config`, backup the target file located at `~/.$name` and symlink `$name` to `~/.$name`
-for name in aliases gemrc gitconfig irbrc rspec zprofile zshrc; do
+for name in aliases gemrc gitconfig gitignore irbrc rspec zprofile zshrc; do
   if [ ! -d "$name" ]; then
     echo "Currently working on $name"
     target="$HOME/.$name"
@@ -82,7 +82,18 @@ if [[ `uname` =~ "Darwin" ]]; then
   ssh-add --apple-use-keychain ~/.ssh/id_ed25519
 fi
 
+echo "Fifth step => Configure work-related github identity."
+
+if [ ! -d "$HOME/code/" ]; then
+  mkdir -p $HOME/code/merciremi/perso/ $HOME/code/merciremi/work/
+  touch $HOME/code/merciremi/work/.gitconfig_include
+  echo "# Please write your work-related user information for Github (name, work email)" >> $HOME/code/merciremi/work/.gitconfig_include
+fi
+
 # Reload the current terminal with the newly installed configuration.
 exec zsh
+
+email=$(gh api user/emails | jq -r '.[].email')
+echo "The mail email associated with the /merciremi folder is $email"
 
 echo "✅ Move on to git setup."
