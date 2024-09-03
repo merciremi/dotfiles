@@ -11,7 +11,7 @@ git config --global user.email "$email"
 
 git add .
 git commit --message "My personal identity for the main gitconfig"
-git push origin master
+git push origin main
 
 # Professional email configuration
 
