@@ -87,3 +87,4 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
 setopt PROMPT_SUBST
 PROMPT='%F{blue}%2d%f %B%F{174}${vcs_info_msg_0_}%f%b%B%F{white}→%f%b '
+export BUNDLER_EDITOR="subl $@ >/dev/null 2>&1 -a"

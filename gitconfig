@@ -64,8 +64,8 @@
   defaultBranch = main
 
 [user]
-	name = ""
-	email = ""
+	name = Remi Mercier
+	email = remi.merci@gmail.com
 
 [includeIf "gitdir:~/code/merciremi/work/**/*.git"]
   path = ~/code/merciremi/work/.gitconfig_include
