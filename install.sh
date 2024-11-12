@@ -1,13 +1,14 @@
 #!/bin/zsh
 
-# Rename a `target` file to `target.backup`
-# if the file exists && is an actual file - not just a symlink.
+# # Rename a `target` file to `target.backup`
+# # if the file exists && is an actual file - not just a symlink.
 backup() {
   target=$1
   # -e => True if file exists (regardless of type).
   if [ -e "$target" ]; then
     # ! => True if the condition is false
     # -L => True if file exists && is a symbolic link.
+    # If file exists && file is a symbolic link != true, trigger backup
     if [ ! -L "$target" ]; then
       mv "$target" "$target.backup"
       echo "-----> Moved the old $target config file to $target.backup"
@@ -60,14 +61,14 @@ if [[ `uname` =~ "Darwin" ]]; then
 fi
 
 # Define Sublime Text path
-if [[ ! `uname` =~ "Darwin" ]]; then
-  SUBL_PATH=~/Library/Application\ Support/Sublime\ Text\ 3
+if [[ `uname` =~ "Darwin" ]]; then
+  SUBL_PATH=~/Library/Application\ Support/Sublime\ Text
 fi
 
 # Install Package Control, favourite packages and settings
 mkdir -p $SUBL_PATH/Packages/User $SUBL_PATH/Installed\ Packages
 backup "$SUBL_PATH/Packages/User/Preferences.sublime-settings"
-subl --command "install_package_control"
+# subl --command "install_package_control" => does not work, go to https://github.com/wbond/package_control instead
 ln -s $PWD/Preferences.sublime-settings $SUBL_PATH/Packages/User/Preferences.sublime-settings
 ln -s $PWD/Package\ Control.sublime-settings $SUBL_PATH/Packages/User/Package\ Control.sublime-settings
 

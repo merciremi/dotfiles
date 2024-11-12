@@ -1,6 +1,6 @@
 {
 	"always_show_minimap_viewport": false,
-	"color_scheme": "Mariana.sublime-color-scheme",
+	"color_scheme": "Catppuccin Macchiato.sublime-color-scheme",
 	"detect_indentation": false,
 	"draw_white_space": true,
 	"ensure_newline_at_eof_on_save": true,
@@ -48,6 +48,5 @@
 	"use_tab_stops": true,
 	"wordWrap": false,
   "auto_complete_commit_on_tab": true,
-  /*"rulers": [[120, "dotted"]],*/
 	"index_files": false,
 }
